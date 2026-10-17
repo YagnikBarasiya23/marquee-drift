@@ -1,0 +1,7 @@
+import { chromium } from '@playwright/test';
+import { writeFileSync } from 'node:fs';
+const names=['morrow','fieldwork','arcwell','softform','northline','stillroom','kindred','openair'];
+const marks=['<path d="M4 24V8h8l8 16V8h8v24h-8L12 16v16H4Z"/>','<path d="M4 7h24v6H10v5h15v6H10v9H4Z"/>','<path d="M3 32V18a13 13 0 0 1 26 0v14h-6V18a7 7 0 0 0-14 0v14Z"/>','<rect x="3" y="5" width="14" height="14" rx="7"/><rect x="17" y="19" width="14" height="14" rx="7"/>','<path d="m3 31 13-26 13 26h-7L16 18 10 31Z"/>','<path d="M4 5h7v28H4zm13 0h7v28h-7Z"/>','<path d="M4 5h7v11L23 5h9L17 19l15 14h-9L11 22v11H4Z"/>','<circle cx="11" cy="19" r="9" fill="none" stroke="#23392d" stroke-width="5"/><circle cx="25" cy="19" r="9" fill="none" stroke="#23392d" stroke-width="5"/>'];
+const browser=await chromium.launch();const page=await browser.newPage({viewport:{width:320,height:96},deviceScaleFactor:1});
+for(let i=0;i<8;i++){const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="320" height="96" viewBox="0 0 160 48"><g fill="#23392d" transform="translate(3 5) scale(.9)">${marks[i]}</g><text x="43" y="30" fill="#23392d" font-family="Arial,sans-serif" font-size="${names[i].length>8?19:21}" letter-spacing="-.6">${names[i]}</text></svg>`;writeFileSync(`art/logo-${i+1}.svg`,svg);await page.setContent(`<style>body{margin:0;background:transparent}</style>${svg}`);await page.screenshot({path:`art/logo-${i+1}.png`,omitBackground:true});}
+await browser.close();

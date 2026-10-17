@@ -1,0 +1,82 @@
+# Marquee Drift
+
+![MIT license](https://img.shields.io/badge/license-MIT-green)
+
+A dependency-free logo or text marquee. Studio Current pairs spacious fictional wordmarks with a gentle current that slows on hover and follows scroll direction.
+
+## Local development
+
+```sh
+npm install
+npm run dev
+npm test
+npm run test:browser
+npm run build
+npm pack --dry-run
+```
+
+Install Playwright browsers with `npx playwright install` if needed. Vite and Playwright are development dependencies only.
+
+## Install and use
+
+This is a local implementation; npm publication is not yet verified. Build and install a local tarball with `npm pack` and `npm install /path/to/marquee-drift-1.0.0.tgz`.
+
+```js
+import MarqueeDrift from 'marquee-drift';
+import 'marquee-drift/style.css';
+
+const drift = new MarqueeDrift(document.querySelector('.studios'), {
+  speed: 28,
+  gap: 48,
+  pauseOnHover: true,
+  direction: 'left',
+});
+// Restore the original nodes, preserving their identity and handlers:
+drift.destroy();
+```
+
+```html
+<div class="studios" aria-label="Our partner studios">
+  <img src="morrow.png" width="160" height="48" alt="Morrow">
+  <img src="fieldwork.png" width="160" height="48" alt="Fieldwork">
+  <!-- Add enough items to fill the available width. -->
+</div>
+```
+
+For a script tag, load `dist/marquee-drift.umd.cjs` and construct `new MarqueeDrift.MarqueeDrift(element, options)`. Include `src/style.css` separately. The ESM and UMD bundles contain no runtime dependencies. Browser bundlers should use the package exports.
+
+| Option | Default | Meaning |
+| --- | --- | --- |
+| `speed` | `28` | Nonnegative finite pixels per second. Zero stops animation. |
+| `gap` | `48` | Nonnegative finite spacing in CSS pixels. |
+| `pauseOnHover` | `true` | Ease to 15% speed while hovered. The persistent pause button stops completely. |
+| `direction` | `'left'` | Initial physical direction: `'left'` or `'right'`. Subsequent vertical scroll direction takes over. |
+
+`destroy()` is safe to call repeatedly. Only one live instance may own an element. To change options or item content, destroy and recreate the instance. Do not mutate the managed DOM while mounted.
+
+## Motion and accessibility
+
+- One visual clone, hidden from assistive technology and marked inert. IDs are removed from cloned descendants.
+- A native, persistent pause/resume button works with keyboard and touch.
+- Focusing original interactive content switches to a stationary, horizontally scrollable track so every link remains reachable.
+- Reduced motion uses the same static presentation and responds to preference changes.
+- Zero items, one item, or content narrower than the viewport stays static. There is no repeated filler.
+- Offscreen instances and hidden documents stop requesting animation frames. ResizeObserver responds to resizing and late-loading images.
+- RTL item order is respected; direction means physical movement regardless of language.
+- Supply meaningful image alternatives and reserve image dimensions. Prefer simple noninteractive logo/text items; avoid forms, media players, or custom widgets in the cloned content.
+
+## Support
+
+Modern Chromium, Firefox, and Safari with ResizeObserver, IntersectionObserver, inert, and matchMedia change events. This is a browser component, not a native Flutter widget; a Flutter Web integration would require a DOM interop wrapper. Server-side imports are safe; construct only after the DOM mounts.
+
+## Art and demo
+
+Eight original geometric SVG wordmarks and transparent 2× PNG exports live in `art/`. Their direction and production method are documented in `art/prompts.md`. Run `node scripts/art.js` to regenerate. Fictional names are demonstration content.
+
+The demo includes theme switching, speed and gap controls, and destroy/recreate. Media is in `media/` when generated. Build outputs must remain below 8 KiB gzipped.
+
+[Watch the 10-second demo](media/demo.mp4) · [Poster](media/poster.png) · [Share image](media/share.png)
+
+## Validation status
+
+Four Node tests pass. All four browser scenarios pass in Chromium and WebKit, including axe scans in both themes. Firefox is configured but its installed browser fails to launch on this machine with `Could not find profile folder`; Firefox compatibility is not yet verified. Hidden-document behavior is tested by dispatching a visibility change with an overridden hidden state; real background-tab scheduling still needs a manual check. GitHub/npm publication and portfolio integration are not performed.
