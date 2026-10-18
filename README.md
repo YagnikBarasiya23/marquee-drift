@@ -19,7 +19,9 @@ Install Playwright browsers with `npx playwright install` if needed. Vite and Pl
 
 ## Install and use
 
-This is a local implementation; npm publication is not yet verified. Build and install a local tarball with `npm pack` and `npm install /path/to/marquee-drift-1.0.0.tgz`.
+```sh
+npm install marquee-drift
+```
 
 ```js
 import MarqueeDrift from 'marquee-drift';
@@ -79,4 +81,4 @@ The demo includes theme switching, speed and gap controls, and destroy/recreate.
 
 ## Validation status
 
-Four Node tests pass. All four browser scenarios pass in Chromium and WebKit, including axe scans in both themes. Firefox is configured but its installed browser fails to launch on this machine with `Could not find profile folder`; Firefox compatibility is not yet verified. Hidden-document behavior is tested by dispatching a visibility change with an overridden hidden state; real background-tab scheduling still needs a manual check. GitHub/npm publication and portfolio integration are not performed.
+Four Node tests pass. All four browser scenarios pass in Chromium and WebKit, including axe scans in both themes. Firefox is configured but its installed browser fails to launch on this machine with `Could not find profile folder`; Firefox compatibility is not yet verified. Hidden-document behavior is tested by dispatching a visibility change with an overridden hidden state; real background-tab scheduling still needs a manual check.
