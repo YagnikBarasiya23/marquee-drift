@@ -1,5 +1,14 @@
 # Validation — 2026-10-17
 
+## Focus lens update — 2026-10-21
+
+- Node unit tests: 6 passed (adds focus curve and lens option validation).
+- Chromium: 5 scenarios passed, including the new focus lens scenario (centre scaling, reduced-motion reset, destroy restores inline styles, demo toggle).
+- WebKit: not run for this update; the installed Playwright WebKit build was unavailable in the validation environment.
+- Production build: ESM 2,390 bytes gzip; UMD 2,329 bytes gzip, below 8 KiB.
+
+## Initial release
+
 - Selected Studio Current implemented locally.
 - Node unit tests: 4 passed.
 - Chromium and WebKit: 4 scenarios per browser passed, including axe scans in light/dark themes, 320px viewport, zero/one/short/full content, default and custom options, focus, RTL, pause/resume, reduced motion, reverse scroll, hover easing, size changes and destroy/recreate.
