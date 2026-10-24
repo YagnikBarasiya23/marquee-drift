@@ -1,8 +1,18 @@
-# Marquee Drift
+<p align="center">
+  <a href="https://github.com/YagnikBarasiya23/marquee-drift"><img src="https://raw.githubusercontent.com/YagnikBarasiya23/marquee-drift/main/media/banner.png" width="800" alt="Marquee Drift, a Wiiby component: a logo marquee that eases under the cursor and turns with your scroll"></a>
+</p>
 
-![MIT license](https://img.shields.io/badge/license-MIT-green)
+<p align="center">
+  <a href="https://www.npmjs.com/package/marquee-drift"><img src="https://img.shields.io/npm/v/marquee-drift.svg?color=1f2a3a" alt="npm version"></a>
+  <img src="https://img.shields.io/badge/dependencies-0-1f2a3a.svg" alt="0 dependencies">
+  <a href="https://github.com/YagnikBarasiya23/marquee-drift/blob/main/LICENSE"><img src="https://img.shields.io/badge/licence-MIT-1f2a3a.svg" alt="MIT licence"></a>
+</p>
 
 A dependency-free logo or text marquee. Studio Current pairs spacious fictional wordmarks with a gentle current that slows on hover and follows scroll direction.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/YagnikBarasiya23/marquee-drift/main/media/demo-hd.gif" width="800" alt="A row of studio wordmarks drifting sideways, slowing to a crawl under the cursor, with a Pause motion button below.">
+</p>
 
 ## Local development
 
@@ -77,7 +87,7 @@ Eight original geometric SVG wordmarks and transparent 2× PNG exports live in `
 
 The demo includes theme switching, speed and gap controls, and destroy/recreate. Media is in `media/` when generated. Build outputs must remain below 8 KiB gzipped.
 
-[Watch the 10-second demo](media/demo.mp4) · [Poster](media/poster.png) · [Share image](media/share.png)
+[Watch the 10-second demo](https://github.com/YagnikBarasiya23/marquee-drift/blob/main/media/demo.mp4) · [Poster](https://raw.githubusercontent.com/YagnikBarasiya23/marquee-drift/main/media/poster.png) · [Share image](https://raw.githubusercontent.com/YagnikBarasiya23/marquee-drift/main/media/share.png)
 
 ## Validation status
 
