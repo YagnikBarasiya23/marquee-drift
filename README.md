@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/YagnikBarasiya23/marquee-drift"><img src="https://raw.githubusercontent.com/YagnikBarasiya23/marquee-drift/main/media/banner.png" width="800" alt="Marquee Drift, a Wiiby component: a logo marquee that eases under the cursor and turns with your scroll"></a>
+  <img src="https://raw.githubusercontent.com/YagnikBarasiya23/marquee-drift/main/media/banner.png" width="800" alt="Marquee Drift, a Wiiby component: a logo marquee that eases under the cursor and turns with your scroll">
 </p>
 
 <p align="center">
